@@ -17,10 +17,6 @@ public class TaskService {
 	public boolean checkExistingTask(int id) {
 		Optional<Task> task = repository.findById(id);
 		
-		if(task.isPresent()) {
-			return true;
-		}else {
-			return false;
-		}
+		return task.isPresent();
 	}
 }
