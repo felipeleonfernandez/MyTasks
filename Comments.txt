@@ -1,5 +1,0 @@
-- Nombre de paquetes siempre en minúsculas
-
-- No subir al repositorio código comentado, solo comentarios para indicar y aclarar el sentido del propio código
-
-- Crear un paquete "model" donde guardar las entities del proyecto
