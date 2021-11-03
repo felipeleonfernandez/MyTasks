@@ -37,7 +37,7 @@ public class TaskController {
 		return repository.getCompletedTasks();
 	}
 	
-	@PostMapping("/tasks/new")
+	@PostMapping("/tasks")
 	public ResponseEntity addNewTask(@RequestBody Task task) {
 		ModifyTaskResponse res = new ModifyTaskResponse();
 		
@@ -52,7 +52,7 @@ public class TaskController {
 		}
 	}
 	
-	@DeleteMapping("/tasks/delete/{id}")
+	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
 			Task task = repository.findById(id).get();
@@ -65,8 +65,8 @@ public class TaskController {
 		}
 	}
 
-	@PutMapping("/tasks/modify/{id}")
-	public ResponseEntity modifyTask(@PathVariable(value="id")int id, @RequestBody Task modifiedTask){
+	@PutMapping("/tasks/{id}")
+	public ResponseEntity<ModifyTaskResponse> modifyTask(@PathVariable(value="id")int id, @RequestBody Task modifiedTask){
 		ModifyTaskResponse res = new ModifyTaskResponse();
 		
 		try {
