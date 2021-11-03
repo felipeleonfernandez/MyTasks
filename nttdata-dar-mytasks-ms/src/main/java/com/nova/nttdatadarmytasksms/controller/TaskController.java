@@ -29,12 +29,14 @@ public class TaskController {
 	
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
-		return repository.getPendingTasks();
+		//return repository.getPendingTasks();
+		return repository.findByStatus("pending");
 	}
 	
 	@GetMapping("/tasks/completed")
 	public List<Task> getCompletedTasks(){
-		return repository.getCompletedTasks();
+		//return repository.getCompletedTasks();
+		return repository.findByStatus("completed");
 	}
 	
 	@PostMapping("/tasks")
