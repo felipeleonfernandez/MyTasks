@@ -28,21 +28,21 @@ public class TaskController {
 	@Autowired
 	TaskService service;
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
 		//return repository.getPendingTasks();
 		return repository.findByStatus("pending");
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@GetMapping("/tasks/completed")
 	public List<Task> getCompletedTasks(){
 		//return repository.getCompletedTasks();
 		return repository.findByStatus("completed");
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@PostMapping("/tasks")
 	public ResponseEntity addNewTask(@RequestBody Task task) {
 		ModifyTaskResponse res = new ModifyTaskResponse();
@@ -58,7 +58,7 @@ public class TaskController {
 		}
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
@@ -72,7 +72,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<ModifyTaskResponse> modifyTask(@PathVariable(value="id")int id, @RequestBody Task modifiedTask){
 		ModifyTaskResponse res = new ModifyTaskResponse();
