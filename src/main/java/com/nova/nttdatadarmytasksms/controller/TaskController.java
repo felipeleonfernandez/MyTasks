@@ -58,7 +58,7 @@ public class TaskController {
 		}
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
