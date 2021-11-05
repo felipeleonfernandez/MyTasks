@@ -28,7 +28,7 @@ public class TaskController {
 	@Autowired
 	TaskService service;
 	
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
 		//return repository.getPendingTasks();
@@ -58,7 +58,7 @@ public class TaskController {
 		}
 	}
 	
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "http://localhost:8080")
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
