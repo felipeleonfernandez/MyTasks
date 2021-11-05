@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,18 +28,21 @@ public class TaskController {
 	@Autowired
 	TaskService service;
 	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
 		//return repository.getPendingTasks();
 		return repository.findByStatus("pending");
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/tasks/completed")
 	public List<Task> getCompletedTasks(){
 		//return repository.getCompletedTasks();
 		return repository.findByStatus("completed");
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@PostMapping("/tasks")
 	public ResponseEntity addNewTask(@RequestBody Task task) {
 		ModifyTaskResponse res = new ModifyTaskResponse();
@@ -54,6 +58,7 @@ public class TaskController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
@@ -67,6 +72,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:8080")
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<ModifyTaskResponse> modifyTask(@PathVariable(value="id")int id, @RequestBody Task modifiedTask){
 		ModifyTaskResponse res = new ModifyTaskResponse();
