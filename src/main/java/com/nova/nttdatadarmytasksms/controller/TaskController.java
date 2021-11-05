@@ -28,7 +28,7 @@ public class TaskController {
 	@Autowired
 	TaskService service;
 	
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
 		//return repository.getPendingTasks();
