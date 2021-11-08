@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.nova.nttdatadarmytasksms.repository.TaskRepository;
 import com.nova.nttdatadarmytasksms.service.TaskService;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class TaskController {
 
@@ -28,21 +29,18 @@ public class TaskController {
 	@Autowired
 	TaskService service;
 	
-	@CrossOrigin(origins = "*")
 	@GetMapping("/tasks/pending")
 	public List<Task> getPendingTasks(){
 		//return repository.getPendingTasks();
 		return repository.findByStatus("pending");
 	}
 	
-	@CrossOrigin(origins = "*")
 	@GetMapping("/tasks/completed")
 	public List<Task> getCompletedTasks(){
 		//return repository.getCompletedTasks();
 		return repository.findByStatus("completed");
 	}
 	
-	@CrossOrigin(origins = "*")
 	@PostMapping("/tasks")
 	public ResponseEntity addNewTask(@RequestBody Task task) {
 		ModifyTaskResponse res = new ModifyTaskResponse();
@@ -58,7 +56,6 @@ public class TaskController {
 		}
 	}
 	
-	@CrossOrigin(origins = "*")
 	@DeleteMapping("/tasks/{id}")
 	public ResponseEntity deleteTask(@PathVariable(value="id")int id) {
 		try {
@@ -72,7 +69,6 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*")
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<ModifyTaskResponse> modifyTask(@PathVariable(value="id")int id, @RequestBody Task modifiedTask){
 		ModifyTaskResponse res = new ModifyTaskResponse();
